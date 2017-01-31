@@ -9,7 +9,11 @@ DGParallaxInteractiveTransition
 
 The `ParallaxInteractiveTransition` add a simple way to perform parallax interactive transition between 2 UIViewController
 
+### Demo iOS
+
 ![Demo iOS](https://github.com/Digipolitan/parallax-interactive-transition-swift/blob/develop/Screenshots/ios_capture.gif?raw=true "Demo iOS")
+
+### Demo tvOS
 
 ![Demo tvOS](https://github.com/Digipolitan/parallax-interactive-transition-swift/blob/develop/Screenshots/tvos_capture.gif?raw=true "Demo tvOS")
 
