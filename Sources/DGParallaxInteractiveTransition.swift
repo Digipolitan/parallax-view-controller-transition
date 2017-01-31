@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DGParallaxInteractiveTransition: UIPercentDrivenInteractiveTransition {
+class DGParallaxInteractiveTransition: UIPercentDrivenInteractiveTransition, UIGestureRecognizerDelegate {
 
     fileprivate(set) public weak var viewController: UIViewController?
     private var previousLocation: CGPoint?
@@ -19,6 +19,7 @@ class DGParallaxInteractiveTransition: UIPercentDrivenInteractiveTransition {
 
     private lazy var panGestureRecognizer: UIPanGestureRecognizer = {
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action:  #selector(handle(gestureRecognizer:)))
+        panGestureRecognizer.delegate = self
         #if os(iOS)
             panGestureRecognizer.maximumNumberOfTouches = 1
         #endif
@@ -33,6 +34,19 @@ class DGParallaxInteractiveTransition: UIPercentDrivenInteractiveTransition {
 
     deinit {
         self.viewController?.view.removeGestureRecognizer(self.panGestureRecognizer)
+    }
+
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if gestureRecognizer == self.panGestureRecognizer {
+            if let view = gestureRecognizer.view, let window = view.window {
+                let translation = self.panGestureRecognizer.translation(in: window)
+                if translation.y > translation.x {
+                    return true
+                }
+            }
+            return false
+        }
+        return true
     }
 
     @objc private func handle(gestureRecognizer: UIPanGestureRecognizer) {

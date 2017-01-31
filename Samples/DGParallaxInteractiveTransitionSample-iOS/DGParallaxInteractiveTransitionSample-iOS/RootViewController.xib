@@ -9,9 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController" customModule="DGParallaxInteractiveTransitionSample_iOS" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RootViewController" customModule="DGParallaxInteractiveTransitionSample_iOS" customModuleProvider="target">
             <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="string" keyPath="title" value="ViewController"/>
+                <userDefinedRuntimeAttribute type="string" keyPath="title" value="RootViewController"/>
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -22,17 +22,20 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCU-ft-lXN">
-                    <rect key="frame" x="134" y="151" width="46" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Button"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCU-ft-lXN">
+                    <rect key="frame" x="88.5" y="318.5" width="199" height="30"/>
+                    <state key="normal" title="Present detail view controller"/>
                     <connections>
                         <action selector="touchDisplayDetail:" destination="-1" eventType="touchUpInside" id="21m-Xm-agR"/>
                     </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <point key="canvasLocation" x="346" y="212"/>
+            <constraints>
+                <constraint firstItem="YCU-ft-lXN" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="BbC-xf-zte"/>
+                <constraint firstItem="YCU-ft-lXN" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="deM-Z7-5o9"/>
+            </constraints>
+            <point key="canvasLocation" x="464" y="184"/>
         </view>
     </objects>
 </document>

@@ -28,35 +28,61 @@ class DGParallaxViewControllerAnimator: NSObject, UIViewControllerAnimatedTransi
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        if self.state == .presenting {
+            self.presentingTransition(using: transitionContext)
+        } else {
+            self.dismissingTransition(using: transitionContext)
+        }
+    }
+
+    private func presentingTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard
-        let fromViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from),
-        let toViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to),
-        let fromView = fromViewController.view,
-        let toView = toViewController.view
-        else {
-            return
+            let fromViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from),
+            let toViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to),
+            let fromView = fromViewController.view,
+            let toView = toViewController.view
+            else {
+                return
         }
         let containerView = transitionContext.containerView
-        var finalFrame = CGRect.zero
-        if self.state == .presenting {
-            finalFrame = transitionContext.finalFrame(for: toViewController)
-            toView.frame = finalFrame.offsetBy(dx: 0, dy: finalFrame.maxY)
-            containerView.addSubview(toView)
-        } else {
-            let fromFinalFrame = transitionContext.finalFrame(for: fromViewController)
-            finalFrame = fromFinalFrame.offsetBy(dx: 0, dy: fromView.frame.maxY)
-        }
+        let toFinalFrame = transitionContext.finalFrame(for: toViewController)
+        toView.frame = toFinalFrame.offsetBy(dx: 0, dy: toFinalFrame.maxY)
+        containerView.addSubview(toView)
         UIView.animate(withDuration: self.transitionDuration(using: transitionContext), delay: 0, options: UIViewAnimationOptions(rawValue: 0), animations: { [weak self] in
             guard let strongSelf = self else {
                 return
             }
-            if strongSelf.state == .presenting {
-                toView.frame = finalFrame
-                fromView.transform = CGAffineTransform.scaledBy(.identity)(x: strongSelf.viewScale, y: strongSelf.viewScale)
-            } else {
-                fromView.frame = finalFrame
-                toView.transform = CGAffineTransform.scaledBy(.identity)(x: strongSelf.viewScale, y: strongSelf.viewScale)
+            toView.frame = toFinalFrame
+            fromView.transform = CGAffineTransform.scaledBy(.identity)(x: strongSelf.viewScale, y: strongSelf.viewScale)
+        }) { (finished) in
+            let cancelled = transitionContext.transitionWasCancelled
+            let completed = finished && !cancelled
+            transitionContext.completeTransition(completed)
+        }
+    }
+
+    private func dismissingTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        guard
+            let fromViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from),
+            let toViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to),
+            let fromView = fromViewController.view,
+            let toView = toViewController.view,
+            let snapshotView = toView.snapshotView(afterScreenUpdates: true)
+            else {
+                return
+        }
+        let containerView = transitionContext.containerView
+        let fromFinalFrame = transitionContext.finalFrame(for: fromViewController)
+        let finalFrame = fromFinalFrame.offsetBy(dx: 0, dy: fromView.frame.maxY)
+        snapshotView.frame = containerView.frame
+        snapshotView.transform = toView.transform
+        containerView.insertSubview(snapshotView, at: 0)
+        UIView.animate(withDuration: self.transitionDuration(using: transitionContext), delay: 0, options: UIViewAnimationOptions(rawValue: 0), animations: { [weak self] in
+            guard let strongSelf = self else {
+                return
             }
+            fromView.frame = finalFrame
+            snapshotView.transform = CGAffineTransform.scaledBy(.identity)(x: strongSelf.viewScale, y: strongSelf.viewScale)
         }) { [weak self] (finished) in
             guard let strongSelf = self else {
                 return
@@ -64,12 +90,9 @@ class DGParallaxViewControllerAnimator: NSObject, UIViewControllerAnimatedTransi
             let cancelled = transitionContext.transitionWasCancelled
             let completed = finished && !cancelled
             transitionContext.completeTransition(completed)
+            snapshotView.removeFromSuperview()
             if completed {
-                if strongSelf.state == .presenting {
-                    containerView.insertSubview(fromView, at: 0)
-                } else {
-                    fromView.removeFromSuperview()
-                }
+                toView.transform = CGAffineTransform.scaledBy(.identity)(x: strongSelf.viewScale, y: strongSelf.viewScale)
             }
         }
     }

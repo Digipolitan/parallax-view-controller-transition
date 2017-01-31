@@ -8,21 +8,38 @@
 
 import UIKit
 
+/**
+ * Custom presentation controller, add margins and overlay color to the transition
+ * @author Benoit BRIATTE http://www.digipolitan.com
+ * @copyright 2017 Digipolitan. All rights reserved.
+ */
 class DGParallaxPresentationController: UIPresentationController {
 
+    /**
+     * Container margins
+     */
     var containerViewInsets: UIEdgeInsets
 
+    /**
+     * Maximum overlay alpha
+     */
+    var maximumOverlayAlpha: CGFloat
+
+    /**
+     * The overlay color
+     */
     var overlayColor: UIColor? {
         get {
             return self.overlayView.backgroundColor
         }
         set {
-            self.overlayView.backgroundColor = newValue != nil ? newValue : .black
+            self.overlayView.backgroundColor = newValue
         }
     }
 
-    var maximumOverlayAlpha: CGFloat
-
+    /**
+     * Retrieves the overlay view
+     */
     fileprivate lazy var overlayView: UIView = {
         let overlayView = UIView()
         overlayView.autoresizingMask = [.flexibleBottomMargin,
@@ -35,20 +52,23 @@ class DGParallaxPresentationController: UIPresentationController {
     }()
 
     override var shouldRemovePresentersView: Bool {
-        return true
+        return false
     }
 
-    override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
-        self.containerViewInsets = .zero
-        self.maximumOverlayAlpha = 0.7
+    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, containerViewInsets: UIEdgeInsets, maximumOverlayAlpha: CGFloat, overlayColor: UIColor) {
+        self.containerViewInsets = containerViewInsets
+        self.maximumOverlayAlpha = maximumOverlayAlpha
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
-        self.overlayColor = nil
+        self.overlayColor = overlayColor
     }
 
     override func presentationTransitionWillBegin() {
         super.presentationTransitionWillBegin()
-        guard let containerView = self.containerView, let presentedView = self.presentedView else {
-            return
+        guard
+            let containerView = self.containerView,
+            let presentedView = self.presentedView
+            else {
+                return
         }
         self.overlayView.frame = containerView.bounds
         self.overlayView.alpha = 0
@@ -58,7 +78,7 @@ class DGParallaxPresentationController: UIPresentationController {
                 return
             }
             strongSelf.overlayView.alpha = strongSelf.maximumOverlayAlpha
-        }, completion: nil)
+            }, completion: nil)
     }
 
     override func dismissalTransitionWillBegin() {
@@ -68,7 +88,7 @@ class DGParallaxPresentationController: UIPresentationController {
                 return
             }
             strongSelf.overlayView.alpha = 0
-        }, completion: nil)
+            }, completion: nil)
     }
 
     override func dismissalTransitionDidEnd(_ completed: Bool) {

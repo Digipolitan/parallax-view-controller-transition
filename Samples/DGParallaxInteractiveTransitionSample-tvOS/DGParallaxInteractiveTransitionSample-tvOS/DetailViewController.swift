@@ -1,8 +1,8 @@
 //
 //  DetailViewController.swift
-//  DGParallaxInteractiveTransitionSample-iOS
+//  DGParallaxInteractiveTransitionSample-tvOS
 //
-//  Created by Benoit BRIATTE on 20/01/2017.
+//  Created by Benoit BRIATTE on 31/01/2017.
 //  Copyright © 2017 Digipolitan. All rights reserved.
 //
 
@@ -13,5 +13,4 @@ class DetailViewController: UIViewController {
     @IBAction func touchDismiss(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-
 }

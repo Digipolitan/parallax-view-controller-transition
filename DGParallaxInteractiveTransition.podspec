@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 s.name = "DGParallaxInteractiveTransition"
 s.version = "1.0.0"
-s.summary = "This is a summary."
+s.summary = "Parallax interactive transition during UIViewController presentation"
 s.homepage = "https://github.com/Digipolitan/parallax-interactive-transition-swift"
 s.authors = "Digipolitan"
 s.source = { :git => "https://github.com/Digipolitan/parallax-interactive-transition-swift.git", :tag => "v#{s.version}" }

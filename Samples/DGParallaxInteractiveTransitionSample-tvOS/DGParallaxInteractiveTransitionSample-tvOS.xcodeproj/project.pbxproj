@@ -12,8 +12,10 @@
 		A30D64971E0D7B2A00A3CE45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A30D64961E0D7B2A00A3CE45 /* Assets.xcassets */; };
 		A30D649F1E0D7BA200A3CE45 /* DGParallaxInteractiveTransition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A30D649E1E0D7BA200A3CE45 /* DGParallaxInteractiveTransition.framework */; };
 		A30D64A01E0D7BA200A3CE45 /* DGParallaxInteractiveTransition.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A30D649E1E0D7BA200A3CE45 /* DGParallaxInteractiveTransition.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A30D64A51E0D7BC200A3CE45 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30D64A31E0D7BC200A3CE45 /* ViewController.swift */; };
-		A30D64A61E0D7BC200A3CE45 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A30D64A41E0D7BC200A3CE45 /* ViewController.xib */; };
+		A30D64A51E0D7BC200A3CE45 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30D64A31E0D7BC200A3CE45 /* RootViewController.swift */; };
+		A30D64A61E0D7BC200A3CE45 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A30D64A41E0D7BC200A3CE45 /* RootViewController.xib */; };
+		A3FA8CA01E40A57C00CA51D6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FA8C9E1E40A57C00CA51D6 /* DetailViewController.swift */; };
+		A3FA8CA11E40A57C00CA51D6 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3FA8C9F1E40A57C00CA51D6 /* DetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,8 +44,10 @@
 		A30D64961E0D7B2A00A3CE45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A30D64981E0D7B2A00A3CE45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A30D649E1E0D7BA200A3CE45 /* DGParallaxInteractiveTransition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DGParallaxInteractiveTransition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A30D64A31E0D7BC200A3CE45 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A30D64A41E0D7BC200A3CE45 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		A30D64A31E0D7BC200A3CE45 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		A30D64A41E0D7BC200A3CE45 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
+		A3FA8C9E1E40A57C00CA51D6 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		A3FA8C9F1E40A57C00CA51D6 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		B59EBA76E4EE0948B3D0809A /* Pods-DGParallaxInteractiveTransitionSample-DGParallaxInteractiveTransitionSample-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DGParallaxInteractiveTransitionSample-DGParallaxInteractiveTransitionSample-tvOS.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-DGParallaxInteractiveTransitionSample-DGParallaxInteractiveTransitionSample-tvOS/Pods-DGParallaxInteractiveTransitionSample-DGParallaxInteractiveTransitionSample-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		ED2ADEE910CDAC99133FE3EF /* Pods-Samples-DGParallaxInteractiveTransitionSample-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Samples-DGParallaxInteractiveTransitionSample-tvOS.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-Samples-DGParallaxInteractiveTransitionSample-tvOS/Pods-Samples-DGParallaxInteractiveTransitionSample-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		FFD332EBB09E825D4FA391D8 /* Pods-Samples-DGParallaxInteractiveTransitionSample-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Samples-DGParallaxInteractiveTransitionSample-tvOS.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-Samples-DGParallaxInteractiveTransitionSample-tvOS/Pods-Samples-DGParallaxInteractiveTransitionSample-tvOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -97,8 +101,10 @@
 			isa = PBXGroup;
 			children = (
 				A30D648F1E0D7B2A00A3CE45 /* AppDelegate.swift */,
-				A30D64A31E0D7BC200A3CE45 /* ViewController.swift */,
-				A30D64A41E0D7BC200A3CE45 /* ViewController.xib */,
+				A30D64A31E0D7BC200A3CE45 /* RootViewController.swift */,
+				A30D64A41E0D7BC200A3CE45 /* RootViewController.xib */,
+				A3FA8C9E1E40A57C00CA51D6 /* DetailViewController.swift */,
+				A3FA8C9F1E40A57C00CA51D6 /* DetailViewController.xib */,
 				A30D64961E0D7B2A00A3CE45 /* Assets.xcassets */,
 				A30D64981E0D7B2A00A3CE45 /* Info.plist */,
 			);
@@ -180,7 +186,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A30D64A61E0D7BC200A3CE45 /* ViewController.xib in Resources */,
+				A30D64A61E0D7BC200A3CE45 /* RootViewController.xib in Resources */,
+				A3FA8CA11E40A57C00CA51D6 /* DetailViewController.xib in Resources */,
 				A30D64971E0D7B2A00A3CE45 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,7 +247,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A30D64A51E0D7BC200A3CE45 /* ViewController.swift in Sources */,
+				A3FA8CA01E40A57C00CA51D6 /* DetailViewController.swift in Sources */,
+				A30D64A51E0D7BC200A3CE45 /* RootViewController.swift in Sources */,
 				A30D64901E0D7B2A00A3CE45 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
