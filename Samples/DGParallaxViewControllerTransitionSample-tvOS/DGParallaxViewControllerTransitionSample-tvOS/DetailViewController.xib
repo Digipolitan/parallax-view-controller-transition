@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="appleTV" orientation="landscape">
+        <adaptation id="light"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="DGParallaxViewControllerTransitionSample_tvOS" customModuleProvider="target">
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="string" keyPath="title" value="DetailViewController"/>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="view" destination="iN0-l3-epB" id="Eym-vH-oyN"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xfu-Xu-UfQ">
+                    <rect key="frame" x="853" y="354" width="214" height="86"/>
+                    <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                    <state key="normal" title="Dismiss"/>
+                    <connections>
+                        <action selector="touchDismiss:" destination="-1" eventType="primaryActionTriggered" id="0AX-t5-BbE"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCk-3v-iIB">
+                    <rect key="frame" x="10" y="200" width="1900" height="144"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="Ati-Bb-XzF"/>
+                    </constraints>
+                    <string key="text">Scroll down to dismiss the view controller with interaction
+
+Click to the "dismiss" button to close the view controller without interaction</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="eCk-3v-iIB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="200" id="4xn-uS-B0l"/>
+                <constraint firstAttribute="trailing" secondItem="eCk-3v-iIB" secondAttribute="trailing" constant="10" id="6ah-Fw-fTs"/>
+                <constraint firstItem="Xfu-Xu-UfQ" firstAttribute="top" secondItem="eCk-3v-iIB" secondAttribute="bottom" constant="10" id="SM3-nd-eMD"/>
+                <constraint firstItem="Xfu-Xu-UfQ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ZCx-98-3Cg"/>
+                <constraint firstItem="eCk-3v-iIB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="gBv-Ru-Sgg"/>
+            </constraints>
+        </view>
+    </objects>
+</document>
