@@ -61,7 +61,7 @@ self.parallaxTransition = parallaxTransition // You must retain the parallax tra
 
 ### Configuration
 
-You can customize the component by enabling few options:
+You can customize the component with few options:
 
 ```swift
 let viewController = UIViewController()

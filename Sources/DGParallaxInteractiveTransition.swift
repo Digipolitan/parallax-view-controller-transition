@@ -18,7 +18,7 @@ class DGParallaxInteractiveTransition: UIPercentDrivenInteractiveTransition, UIG
     }
 
     private lazy var panGestureRecognizer: UIPanGestureRecognizer = {
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action:  #selector(handle(gestureRecognizer:)))
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handle(gestureRecognizer:)))
         panGestureRecognizer.delegate = self
         #if os(iOS)
             panGestureRecognizer.maximumNumberOfTouches = 1
