@@ -1,6 +1,6 @@
 //
 //  DGParallaxViewControllerTransition.swift
-//  DGParallaxInteractiveTransition
+//  DGParallaxViewControllerTransition
 //
 //  Created by Benoit BRIATTE on 17/01/2017.
 //  Copyright © 2017 Digipolitan. All rights reserved.
@@ -18,7 +18,7 @@ open class DGParallaxViewControllerTransition: NSObject, UIViewControllerTransit
     /**
      * Retrieves the interactive transition if interactive = true when the view controller is attach to the transition
      */
-    fileprivate var interactiveTransition: DGParallaxInteractiveTransition?
+    private var interactiveTransition: ParallaxInteractiveTransition?
 
     /**
      * Modify presented margins, default zero margin
@@ -57,24 +57,24 @@ open class DGParallaxViewControllerTransition: NSObject, UIViewControllerTransit
         viewController.transitioningDelegate = self
         viewController.modalPresentationStyle = .custom
         if interactive {
-            self.interactiveTransition = DGParallaxInteractiveTransition(viewController: viewController)
+            self.interactiveTransition = ParallaxInteractiveTransition(viewController: viewController)
         } else {
             self.interactiveTransition = nil
         }
     }
 
     public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return DGParallaxPresentationController(presentedViewController: presented, presenting: presenting, containerViewInsets: self.presentedViewInsets, maximumOverlayAlpha: self.maximumOverlayAlpha, overlayColor: self.overlayColor)
+        return ParallaxPresentationController(presentedViewController: presented, presenting: presenting, containerViewInsets: self.presentedViewInsets, maximumOverlayAlpha: self.maximumOverlayAlpha, overlayColor: self.overlayColor)
     }
 
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        let animator = DGParallaxViewControllerAnimator(state: .presenting)
+        let animator = ParallaxViewControllerAnimator(state: .presenting)
         animator.viewScale = self.presentingViewScale
         return animator
     }
 
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return DGParallaxViewControllerAnimator(state: .dismissing)
+        return ParallaxViewControllerAnimator(state: .dismissing)
     }
 
     public func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {

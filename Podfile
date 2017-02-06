@@ -1,13 +1,13 @@
-workspace 'DGParallaxInteractiveTransition.xcworkspace'
+workspace 'DGParallaxViewControllerTransition.xcworkspace'
 
 ## Frameworks targets
 abstract_target 'Frameworks' do
 	use_frameworks!
-	target 'DGParallaxInteractiveTransition-iOS' do
+	target 'DGParallaxViewControllerTransition-iOS' do
 		platform :ios, '8.0'
 	end
 
-	target 'DGParallaxInteractiveTransition-tvOS' do
+	target 'DGParallaxViewControllerTransition-tvOS' do
 		platform :tvos, '9.0'
 	end
 end
@@ -15,11 +15,11 @@ end
 ## Tests targets
 abstract_target 'Tests' do
 	use_frameworks!
-	target 'DGParallaxInteractiveTransitionTests-iOS' do
+	target 'DGParallaxViewControllerTransitionTests-iOS' do
 		platform :ios, '8.0'
 	end
 
-	target 'DGParallaxInteractiveTransitionTests-tvOS' do
+	target 'DGParallaxViewControllerTransitionTests-tvOS' do
 		platform :tvos, '9.0'
 	end
 end
@@ -27,13 +27,13 @@ end
 ## Samples targets
 abstract_target 'Samples' do
 	use_frameworks!
-	target 'DGParallaxInteractiveTransitionSample-iOS' do
-		project 'Samples/DGParallaxInteractiveTransitionSample-iOS/DGParallaxInteractiveTransitionSample-iOS'
+	target 'DGParallaxViewControllerTransitionSample-iOS' do
+		project 'Samples/DGParallaxViewControllerTransitionSample-iOS/DGParallaxViewControllerTransitionSample-iOS'
 		platform :ios, '8.0'
 	end
 
-	target 'DGParallaxInteractiveTransitionSample-tvOS' do
-		project 'Samples/DGParallaxInteractiveTransitionSample-tvOS/DGParallaxInteractiveTransitionSample-tvOS'
+	target 'DGParallaxViewControllerTransitionSample-tvOS' do
+		project 'Samples/DGParallaxViewControllerTransitionSample-tvOS/DGParallaxViewControllerTransitionSample-tvOS'
 		platform :tvos, '9.0'
 	end
 end

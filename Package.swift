@@ -1,7 +1,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "DGParallaxInteractiveTransition",
+    name: "DGParallaxViewControllerTransition",
     dependencies: [
     ]
 )
