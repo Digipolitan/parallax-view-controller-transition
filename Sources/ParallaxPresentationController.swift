@@ -55,7 +55,10 @@ class ParallaxPresentationController: UIPresentationController {
         return false
     }
 
-    public init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, containerViewInsets: UIEdgeInsets, maximumOverlayAlpha: CGFloat, overlayColor: UIColor) {
+    public init(presentedViewController: UIViewController,
+                presenting presentingViewController: UIViewController?,
+                containerViewInsets: UIEdgeInsets,
+                maximumOverlayAlpha: CGFloat, overlayColor: UIColor) {
         self.containerViewInsets = containerViewInsets
         self.maximumOverlayAlpha = maximumOverlayAlpha
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
@@ -99,14 +102,6 @@ class ParallaxPresentationController: UIPresentationController {
     }
 
     public override var frameOfPresentedViewInContainerView: CGRect {
-        return UIEdgeInsetsInsetRect(super.frameOfPresentedViewInContainerView, self.containerViewInsets)
-    }
-
-    public override func containerViewWillLayoutSubviews() {
-        super.containerViewWillLayoutSubviews()
-        guard let containerView = self.containerView else {
-            return
-        }
-        self.presentingViewController.view.bounds = containerView.frame
+        return UIEdgeInsetsInsetRect(self.containerView?.bounds ?? .zero, self.containerViewInsets)
     }
 }

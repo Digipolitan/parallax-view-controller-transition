@@ -1,7 +1,7 @@
 DGParallaxViewControllerTransition
 =================================
 
-[![Build Status](https://travis-ci.org/Digipolitan/parallax-view-controller-transition-swift.svg?branch=master)](https://travis-ci.org/Digipolitan/parallax-view-controller-transition-swift)
+[![Build Status](https://travis-ci.org/Digipolitan/parallax-view-controller-transition.svg?branch=master)](https://travis-ci.org/Digipolitan/parallax-view-controller-transition)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/DGParallaxViewControllerTransition.svg)](https://img.shields.io/cocoapods/v/DGParallaxViewControllerTransition.svg)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Platform](https://img.shields.io/cocoapods/p/DGParallaxViewControllerTransition.svg?style=flat)](http://cocoadocs.org/docsets/DGParallaxViewControllerTransition)
@@ -11,11 +11,11 @@ The `ParallaxInteractiveTransition` add a simple way to perform parallax interac
 
 ### Demo iOS
 
-![Demo iOS](https://github.com/Digipolitan/parallax-view-controller-transition-swift/blob/develop/Screenshots/ios_capture.gif?raw=true "Demo iOS")
+![Demo iOS](https://github.com/Digipolitan/parallax-view-controller-transition/blob/develop/Screenshots/ios_capture.gif?raw=true "Demo iOS")
 
 ### Demo tvOS
 
-![Demo tvOS](https://github.com/Digipolitan/parallax-view-controller-transition-swift/blob/develop/Screenshots/tvos_capture.gif?raw=true "Demo tvOS")
+![Demo tvOS](https://github.com/Digipolitan/parallax-view-controller-transition/blob/develop/Screenshots/tvos_capture.gif?raw=true "Demo tvOS")
 
 
 ## Getting Started
@@ -24,7 +24,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-Works with iOS 8+, tested on Xcode 8.2
+Works with iOS 8+, tested on Xcode 9.2
 
 ### Installing
 
