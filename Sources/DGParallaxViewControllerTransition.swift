@@ -40,6 +40,8 @@ open class DGParallaxViewControllerTransition: NSObject, UIViewControllerTransit
      */
     open var presentingViewScale: CGFloat
 
+    private var viewTransform: CGAffineTransform?
+
     public override init() {
         self.overlayColor = .black
         self.maximumOverlayAlpha = 0.75
@@ -64,17 +66,24 @@ open class DGParallaxViewControllerTransition: NSObject, UIViewControllerTransit
     }
 
     public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return ParallaxPresentationController(presentedViewController: presented, presenting: presenting, containerViewInsets: self.presentedViewInsets, maximumOverlayAlpha: self.maximumOverlayAlpha, overlayColor: self.overlayColor)
+        return ParallaxPresentationController(presentedViewController: presented,
+                                              presenting: presenting,
+                                              containerViewInsets: self.presentedViewInsets,
+                                              maximumOverlayAlpha: self.maximumOverlayAlpha,
+                                              overlayColor: self.overlayColor)
     }
 
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let animator = ParallaxViewControllerAnimator(state: .presenting)
-        animator.viewScale = self.presentingViewScale
+        self.viewTransform = presented.view.transform
+        animator.viewTransform = presented.view.transform.scaledBy(x: self.presentingViewScale, y: self.presentingViewScale)
         return animator
     }
 
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return ParallaxViewControllerAnimator(state: .dismissing)
+        let animator = ParallaxViewControllerAnimator(state: .dismissing)
+        animator.viewTransform = self.viewTransform ?? .identity
+        return animator
     }
 
     public func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {

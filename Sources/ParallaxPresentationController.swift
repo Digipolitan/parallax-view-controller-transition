@@ -51,11 +51,16 @@ class ParallaxPresentationController: UIPresentationController {
         return overlayView
     }()
 
+    private var animated: Bool = false
+
     public override var shouldRemovePresentersView: Bool {
         return false
     }
 
-    public init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, containerViewInsets: UIEdgeInsets, maximumOverlayAlpha: CGFloat, overlayColor: UIColor) {
+    public init(presentedViewController: UIViewController,
+                presenting presentingViewController: UIViewController?,
+                containerViewInsets: UIEdgeInsets,
+                maximumOverlayAlpha: CGFloat, overlayColor: UIColor) {
         self.containerViewInsets = containerViewInsets
         self.maximumOverlayAlpha = maximumOverlayAlpha
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
@@ -64,6 +69,7 @@ class ParallaxPresentationController: UIPresentationController {
 
     public override func presentationTransitionWillBegin() {
         super.presentationTransitionWillBegin()
+        self.animated = true
         guard
             let containerView = self.containerView,
             let presentedView = self.presentedView
@@ -81,8 +87,14 @@ class ParallaxPresentationController: UIPresentationController {
             }, completion: nil)
     }
 
+    override func presentationTransitionDidEnd(_ completed: Bool) {
+        super.presentationTransitionDidEnd(completed)
+        self.animated = false
+    }
+
     public override func dismissalTransitionWillBegin() {
         super.dismissalTransitionWillBegin()
+        self.animated = true
         self.presentedViewController.transitionCoordinator?.animate(alongsideTransition: { [weak self] _ in
             guard let strongSelf = self else {
                 return
@@ -93,20 +105,21 @@ class ParallaxPresentationController: UIPresentationController {
 
     public override func dismissalTransitionDidEnd(_ completed: Bool) {
         super.dismissalTransitionDidEnd(completed)
+        self.animated = false
         if completed {
             self.overlayView.removeFromSuperview()
         }
     }
 
     public override var frameOfPresentedViewInContainerView: CGRect {
-        return UIEdgeInsetsInsetRect(super.frameOfPresentedViewInContainerView, self.containerViewInsets)
+        return UIEdgeInsetsInsetRect(self.containerView?.bounds ?? .zero, self.containerViewInsets)
     }
 
-    public override func containerViewWillLayoutSubviews() {
+    override func containerViewWillLayoutSubviews() {
         super.containerViewWillLayoutSubviews()
-        guard let containerView = self.containerView else {
+        guard self.animated == false else {
             return
         }
-        self.presentingViewController.view.bounds = containerView.frame
+        //self.presentedViewController.view.bounds = self.frameOfPresentedViewInContainerView
     }
 }
