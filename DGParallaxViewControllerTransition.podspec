@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name = "DGParallaxViewControllerTransition"
-s.version = "1.0.0"
+s.version = "1.1.0"
 s.summary = "Parallax interactive transition during UIViewController presentation"
 s.homepage = "https://github.com/Digipolitan/parallax-view-controller-transition"
 s.authors = "Digipolitan"
